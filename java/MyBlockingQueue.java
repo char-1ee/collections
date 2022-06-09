@@ -1,9 +1,9 @@
-package ProducerConsumer;
+package java;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
+/**
+ * producter-consumer implementations in java
+ */
 public class MyBlockingQueue {
     private final int MAX_SIZE = 5;
     private List<Integer> buffer;
