@@ -1,3 +1,11 @@
+/**
+ * Type Guards: get information about the type of a variable, usually within a conditional block.
+ *  - typeof
+ *  - instanceof
+ *  - in
+ *  - user-defined 
+ */
+
 // =========== typeof ============
 type alphanumeric = string | number;
 
