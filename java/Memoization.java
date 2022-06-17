@@ -1,4 +1,5 @@
 package java;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +29,6 @@ public class Memoization {
 
     // Fibonacci without Memoization
     public int fibonacci(int n) {
-
         if (n == 0)
             return 0;
         if (n == 1)
@@ -39,9 +39,7 @@ public class Memoization {
     }
 
     public static void main(String[] args) {
-
         Memoization fibonacci = new Memoization();
-        System.out.println("Fibonacci value for n=5:  " + fibonacci.fibonacciMemoize(5));
-
+        System.out.println("Fibonacci value for n=5: " + fibonacci.fibonacciMemoize(5));
     }
 }

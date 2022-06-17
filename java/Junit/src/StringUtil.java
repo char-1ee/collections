@@ -1,4 +1,4 @@
-package java.Junit.src;
+package java.junit.src;
 
 public class StringUtil {
     public static String capitalize(String s) {

@@ -1,4 +1,4 @@
-package java.Junit.src;
+package java.junit.src;
 
 public class Calculator {
     private long n = 0;

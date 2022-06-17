@@ -1,4 +1,4 @@
-package java.Junit;
+package java.junit;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,7 @@ import jdk.jfr.Timestamp;
 
 /**
  * 1. Junit编写unit testing
- * 2. Fixture 
+ * 2. Fixture
  * 3. Exception testing
  * 4. Conditional testing
  * 5. Parameterized testing
@@ -21,7 +21,8 @@ public class Test {
      * assertNotNull(): 期待结果为非null
      * assertArrayEquals(): 期待结果为数组并与期望数组每个元素的值均相等
      * 
-     * 使用浮点数时，由于浮点数无法精确地进行比较，因此，我们需要调用assertEquals(double expected, double actual, double delta)这个重载方法，指定一个误差值：
+     * 使用浮点数时，由于浮点数无法精确地进行比较，因此，我们需要调用assertEquals(double expected, double actual,
+     * double delta)这个重载方法，指定一个误差值：
      * assertEquals(0.1, Math.abs(1 - 9 / 10.0), 0.0000001);
      */
     public class FactorialTest {
@@ -45,8 +46,8 @@ public class Test {
             assertThrows(IllegalArgumentException.class, new Executable() {
                 @Override
                 public void execute() throws Throwable {
-                        Factorial.fact(-1);
-                }   
+                    Factorial.fact(-1);
+                }
             });
         }
     }
@@ -68,14 +69,14 @@ public class Test {
         public void tearDown() {
             this.calculator = null;
         }
-    
+
         @Test
         void testAdd() {
             assertEquals(100, this.calculator.add(100));
             assertEquals(150, this.calculator.add(50));
             assertEquals(130, this.calculator.add(-20));
         }
-    
+
         @Test
         void testSub() {
             assertEquals(-100, this.calculator.sub(100));
@@ -85,10 +86,12 @@ public class Test {
     }
 
     /**
-     * @DisabledOnOs(OS.WINDOWS)                                        不在Windows平台执行的测试
-     * @DisableOnJre(JRE.JAVA_8)                                        只能在Java 9或更高版本执行的测试
-     * @EnableIfSystemProperty(named = "os.arch", matches = ".*64.*")   只能在64位操作系统上执行的测试
-     * @EnabledIfEnvironmentVariable(named = "DEBUG", matches = "true") 需要传入环境变量DEBUG=true才能执行的测试
+     * @DisabledOnOs(OS.WINDOWS) 不在Windows平台执行的测试
+     * @DisableOnJre(JRE.JAVA_8) 只能在Java 9或更高版本执行的测试
+     * @EnableIfSystemProperty(named = "os.arch", matches = ".*64.*")
+     *                               只能在64位操作系统上执行的测试
+     * @EnabledIfEnvironmentVariable(named = "DEBUG", matches = "true")
+     *                                     需要传入环境变量DEBUG=true才能执行的测试
      */
     public class ConfigTest {
         @Test
@@ -103,7 +106,7 @@ public class Test {
             assertEquals("/usr/local/test.cfg", config.getConfigFile("test.cfg"));
         }
     }
-    
+
     /**
      * @ParameterizedTest
      * @ValueSource
@@ -117,7 +120,7 @@ public class Test {
     }
 
     public class StringUtilTest {
-        
+
         /**
          * @MethodSource 它允许我们编写一个同名的静态方法来提供测试参数
          */
@@ -135,7 +138,7 @@ public class Test {
         }
 
         /**
-         *  @CsvSource 它的每一个字符串表示一行，一行包含的若干参数用,分隔，因此，上述测试又可以改写如下：
+         * @CsvSource 它的每一个字符串表示一行，一行包含的若干参数用,分隔，因此，上述测试又可以改写如下：
          */
         @ParameterizedTest
         @CsvSource({ "abc, Abc", "APPLE, Apple", "gooD, Good" })
@@ -147,10 +150,10 @@ public class Test {
          * @CsvFileSource 如果有成百上千的测试输入，那么，直接写@CsvSource就很不方便。这个时候，我们可以把测试数据提到一个独立的CSV文件中，然后标注上@CsvFileSource：
          */
         @ParameterizedTest
-        @CsvFileSource(resources = { "/test-capitalize.csv" })  // JUnit只在classpath中查找指定的CSV文件，因此，test-capitalize.csv这个文件要放到test目录下
+        @CsvFileSource(resources = { "/test-capitalize.csv" }) // JUnit只在classpath中查找指定的CSV文件，因此，test-capitalize.csv这个文件要放到test目录下
         void testCapitalizeUsingCsvFile(String input, String result) {
             assertEquals(result, StringUtils.capitalize(input));
         }
     }
-    
+
 }

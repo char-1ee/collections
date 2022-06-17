@@ -1,4 +1,4 @@
-package java.Junit.src;
+package java.junit.src;
 
 public class Config {
     public String getConfigFile(String filename) {
