@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "rxjs": "^7.5.5",
+    "typescript": "^4.7.4"
+  },
+  "name": "collections",
+  "description": "Collections of programming practices.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "tslib": "^2.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/char-1ee/collections.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/char-1ee/collections/issues"
+  },
+  "homepage": "https://github.com/char-1ee/collections#readme"
+}
