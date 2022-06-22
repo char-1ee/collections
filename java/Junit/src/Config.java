@@ -1,7 +1,7 @@
 package java.junit.src;
 
 public class Config {
-    public String getConfigFile(String filename) {
+    public static String getConfigFile(String filename) {
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) {
             return "C:\\" + filename;

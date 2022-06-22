@@ -1,14 +1,15 @@
 package java;
+
 import java.util.*;
 
 /**
  * producter-consumer implementations in java
  */
-public class MyBlockingQueue {
+public class BlockingQueue {
     private final int MAX_SIZE = 5;
     private List<Integer> buffer;
 
-    public MyBlockingQueue() {
+    public BlockingQueue() {
         this.buffer = new ArrayList<>();
     }
 
@@ -40,10 +41,12 @@ public class MyBlockingQueue {
 }
 
 class Producer implements Runnable {
-    private MyBlockingQueue queue;
-    public Producer (MyBlockingQueue queue) {
+    private BlockingQueue queue;
+
+    public Producer(BlockingQueue queue) {
         this.queue = queue;
     }
+
     @Override
     public void run() {
         while (true) {
@@ -53,10 +56,12 @@ class Producer implements Runnable {
 }
 
 class Consumer implements Runnable {
-    private MyBlockingQueue queue;
-    public Consumer (MyBlockingQueue queue) {
+    private BlockingQueue queue;
+
+    public Consumer(BlockingQueue queue) {
         this.queue = queue;
     }
+
     @Override
     public void run() {
         while (true) {
@@ -67,7 +72,7 @@ class Consumer implements Runnable {
 
 class Main {
     public static void main(String[] args) throws InterruptedException {
-        MyBlockingQueue queue = new MyBlockingQueue();
+        BlockingQueue queue = new BlockingQueue();
         Producer p = new Producer(queue);
         Consumer c = new Consumer(queue);
         new Thread(p).start();

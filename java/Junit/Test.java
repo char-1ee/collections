@@ -3,6 +3,12 @@ package java.junit;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import java.junit.src.Config;
+import java.junit.src.Factorial;
+import java.junit.src.Calculator;
+import java.junit.src.StringUtil;
+import java.util.*;
+
 import jdk.jfr.Timestamp;
 
 /**
@@ -97,13 +103,13 @@ public class Test {
         @Test
         @EnabledOnOs(OS.WINDOWS)
         void testWindows() {
-            assertEquals("C:\\test.ini", config.getConfigFile("test.ini"));
+            assertEquals("C:\\test.ini", Config.getConfigFile("test.ini"));
         }
 
         @Test
         @EnabledOnOs({ OS.LINUX, OS.MAC })
         void testLinuxAndMac() {
-            assertEquals("/usr/local/test.cfg", config.getConfigFile("test.cfg"));
+            assertEquals("/usr/local/test.cfg", Config.getConfigFile("test.cfg"));
         }
     }
 
@@ -127,7 +133,7 @@ public class Test {
         @ParameterizedTest
         @MethodSource
         void testCapitalize1(String input, String result) {
-            assertEquals(result, StringUtils.capitalize(input));
+            assertEquals(result, StringUtil.capitalize(input));
         }
 
         static List<Arguments> testCapitalize() {
@@ -143,7 +149,7 @@ public class Test {
         @ParameterizedTest
         @CsvSource({ "abc, Abc", "APPLE, Apple", "gooD, Good" })
         void testCapitalize(String input, String result) {
-            assertEquals(result, StringUtils.capitalize(input));
+            assertEquals(result, StringUtil.capitalize(input));
         }
 
         /**
@@ -152,8 +158,7 @@ public class Test {
         @ParameterizedTest
         @CsvFileSource(resources = { "/test-capitalize.csv" }) // JUnit只在classpath中查找指定的CSV文件，因此，test-capitalize.csv这个文件要放到test目录下
         void testCapitalizeUsingCsvFile(String input, String result) {
-            assertEquals(result, StringUtils.capitalize(input));
+            assertEquals(result, StringUtil.capitalize(input));
         }
     }
-
 }
