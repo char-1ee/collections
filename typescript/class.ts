@@ -13,21 +13,22 @@ abstract class Account {
 
 /** Class structure */
 class User extends Account /* implements Updatable, Serializable */ {
-    id: string; // a field
     displayName?: boolean; // an optional field
     name!: string;  // a nullable field
     #attributes: Map<any, any>; // a private field
-    roles: ["user"]; // a field with a default
+    roles: ["user"] | undefined; // a field with a default
     readonly createdAt = new Date(); // a readonly field immutable with a default
 
     // constructor, called on 'new'
-    constructor(id: string, name: string) {
+    constructor(id: string, name: string, attributes: Map<any, any>) {
         super(id);
         this.name = name;
+        this.#attributes = attributes;
     }
 
     // override but without @override
     getName() { return this.name; }
+    getAttribute() { return this.#attributes; }
 
     // difference way to describe class methods
     setName(name: string) { this.name = name; }
@@ -58,7 +59,7 @@ class User extends Account /* implements Updatable, Serializable */ {
 }
 
 /** Create an class instance */
-const userInstance = new User('1', 'char');
+const userInstance = new User('1', 'char', null);
 
 /** Parameter properties */
 class Locations {
