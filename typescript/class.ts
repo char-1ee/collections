@@ -15,12 +15,12 @@ abstract class Account {
 class User extends Account /* implements Updatable, Serializable */ {
     displayName?: boolean; // an optional field
     name!: string;  // a nullable field
-    #attributes: Map<any, any>; // a private field
+    #attributes: Map<any, any> | null; // a private field
     roles: ["user"] | undefined; // a field with a default
     readonly createdAt = new Date(); // a readonly field immutable with a default
 
     // constructor, called on 'new'
-    constructor(id: string, name: string, attributes: Map<any, any>) {
+    constructor(id: string, name: string, attributes: Map<any, any> | null) {
         super(id);
         this.name = name;
         this.#attributes = attributes;
